@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy, :move_to_index]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy, :move_to_index]
   before_action :authenticate_user!, except: [:index, :show, :destroy]
   before_action :move_to_index, only: [:edit]
 
@@ -50,7 +50,7 @@ class PrototypesController < ApplicationController
    params.require(:prototype).permit(:title, :catch_copy, :concept, :user, :image).merge(user_id: current_user.id)
  end
 
- def set_tweet
+ def set_prototype
   @prototype = Prototype.find(params[:id])
 end
 
